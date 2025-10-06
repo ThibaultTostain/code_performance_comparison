@@ -12,27 +12,38 @@
     }                                                                                                                                     \
                                                                                                                                           \
     /* Initialise values */                                                                                                               \
-    float log_step = 0;                                                                                                                   \
+    long double log_start = log10l(PARAMETERS.start);                                                                                     \
+    long double log_end = log10l(PARAMETERS.end);                                                                                         \
+    long double log_step = 0;                                                                                                             \
     if (PARAMETERS.step > 1)                                                                                                              \
     {                                                                                                                                     \
-        log_step = (log_end - log_start) / (PARAMETERS.step - 1);                                                                         \
+        log_step = (log_end - log_start) / (long double)(PARAMETERS.step - 1);                                                            \
     }                                                                                                                                     \
+    long double log_value;                                                                                                                \
+    unsigned long long int value;                                                                                                         \
                                                                                                                                           \
     /*Compute the function*/                                                                                                              \
-    for (int i = 0; i < (PARAMETERS.step); i++)                                                                                           \
+    for (unsigned int i = 0; i < (PARAMETERS.step); i++)                                                                                  \
     {                                                                                                                                     \
-        float log_value = log_start + i * log_step;                                                                                       \
-        int value = pow(10, log_value);                                                                                                   \
+        if (PARAMETERS.step == 1)                                                                                                         \
+        {                                                                                                                                 \
+            value = PARAMETERS.start;                                                                                                     \
+        }                                                                                                                                 \
+        else                                                                                                                              \
+        {                                                                                                                                 \
+            log_value = log_start + i * log_step;                                                                                         \
+            value = pow(10, log_value);                                                                                                   \
+        }                                                                                                                                 \
         clock_t start_time = clock();                                                                                                     \
         int res = 0;                                                                                                                      \
-        for (int rep = 0; rep < (PARAMETERS.rep); rep++)                                                                                  \
+        for (unsigned int rep = 0; rep < (PARAMETERS.rep); rep++)                                                                         \
         {                                                                                                                                 \
-            res = FCT(value); /*Add volatile to avoid optimisation because it's unused*/                                                  \
+            res = FCT(value);                                                                                                             \
         }                                                                                                                                 \
         clock_t end_time = clock();                                                                                                       \
         double elapsed = (double)(end_time - start_time) / CLOCKS_PER_SEC;                                                                \
         double avg_time = elapsed / (PARAMETERS.rep);                                                                                     \
-        printf("%d | %d : %.6fs\n", res, value, avg_time);                                                                                \
+        printf("%d | %llu : %.6fs\n", res, value, avg_time);                                                                              \
         if (avg_time >= (PARAMETERS.max_time))                                                                                            \
         {                                                                                                                                 \
             printf("STOP : avg_time >= MAX_TIME.\n");                                                                                     \

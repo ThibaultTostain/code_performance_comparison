@@ -10,7 +10,8 @@
 
 typedef struct
 {
-    int start, end, step, rep, max_time;
+    unsigned long long int start, end;
+    unsigned int step, rep, max_time;
     /*
     start: minimal value for the test
     end: maximum value for the test

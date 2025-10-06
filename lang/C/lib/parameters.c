@@ -4,8 +4,8 @@
 void parameters_print(parameters *p)
 {
     printf("== Parameters ==\n");
-    printf("START : %d\n", p->start);
-    printf("END : %d\n", p->end);
+    printf("START : %llu\n", p->start);
+    printf("END : %llu\n", p->end);
     printf("STEP : %d\n", p->step);
     printf("REP : %d\n", p->rep);
     printf("Max_TIME : %ds\n", p->max_time);
@@ -18,11 +18,15 @@ parameters parameters_set(int argc, char *argv[])
     parameters parm;
     if (argc == 6)
     {
-        parm = (parameters){atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5])};
+        char *endptr_1;
+        char *endptr_2;
+        parm = (parameters){strtoull(argv[1], &endptr_1, 10), strtoull(argv[2], &endptr_2, 10), atoi(argv[3]), atoi(argv[4]), atoi(argv[5])};
     }
     else if (argc == 4)
     {
-        parm = (parameters){atoi(argv[1]), atoi(argv[1]), 1, atoi(argv[2]), atoi(argv[3])};
+        char *endptr_1;
+        char *endptr_2;
+        parm = (parameters){strtoull(argv[1], &endptr_1, 10), strtoull(argv[1], &endptr_2, 10), 1, atoi(argv[2]), atoi(argv[3])};
         printf("Run : Test a specific value.\n");
     }
     else

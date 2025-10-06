@@ -2,10 +2,10 @@
 #include "time_compute.h"
 
 // Check if a number is prime
-int every_number(int n)
+int every_number(unsigned long long int n)
 {
     // Check for every number until it reteach the max value or find a good value
-    for (int i = 2; i < n; i++)
+    for (unsigned long long int i = 2; i < n; i++)
     {
         if ((n % i) == 0)
         {

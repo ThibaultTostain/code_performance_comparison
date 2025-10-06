@@ -20,6 +20,11 @@ parameters parameters_set(int argc, char *argv[])
     {
         parm = (parameters){atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5])};
     }
+    else if (argc == 4)
+    {
+        parm = (parameters){atoi(argv[1]), atoi(argv[1]), 1, atoi(argv[2]), atoi(argv[3])};
+        printf("Run : Test a specific value.\n");
+    }
     else
     {
         parm = (parameters){START_DEFAULT, END_DEFAULT, STEP_DEFAULT, REP_DEFAULT, MAX_TIME_DEFAULT};

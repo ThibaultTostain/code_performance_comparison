@@ -12,9 +12,11 @@
     }                                                                                                                                     \
                                                                                                                                           \
     /* Initialise values */                                                                                                               \
-    float log_start = log10(PARAMETERS.start);                                                                                            \
-    float log_end = log10(PARAMETERS.end);                                                                                                \
-    float log_step = (log_end - log_start) / (PARAMETERS.step - 1);                                                                       \
+    float log_step = 0;                                                                                                                   \
+    if (PARAMETERS.step > 1)                                                                                                              \
+    {                                                                                                                                     \
+        log_step = (log_end - log_start) / (PARAMETERS.step - 1);                                                                         \
+    }                                                                                                                                     \
                                                                                                                                           \
     /*Compute the function*/                                                                                                              \
     for (int i = 0; i < (PARAMETERS.step); i++)                                                                                           \

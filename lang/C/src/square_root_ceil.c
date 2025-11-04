@@ -1,6 +1,6 @@
 #include <math.h>
 #include "parameters.h"
-#include "time_compute.h"
+#include "compute.h"
 
 // Check if a number is prime
 int square_root_ceil(unsigned long long int n)
@@ -19,5 +19,5 @@ int square_root_ceil(unsigned long long int n)
 int main(int argc, char *argv[])
 {
     parameters parm = parameters_set(argc, argv); // Set parameters for the test
-    TIME_COMPUTE(square_root_ceil, parm);         // Do the test
+    compute(square_root_ceil, parm);              // Do the test
 }

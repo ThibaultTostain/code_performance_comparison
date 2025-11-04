@@ -41,3 +41,7 @@ To measure the execution time of functions, I use the `time.h` library and the `
 
 ### Benchmark Libraries
 I am aware of existing benchmarking libraries, but I prefer to implement my own solution for learning purposes. This may change in the future.
+
+## Some C code information
+
+1. The function `strdup(str)` alloc memory like `malloc(strlen(str) + 1)` and duplicate the string inside of it. So use `free()` at the end. You also have to add `#define _GNU_SOURCE`.

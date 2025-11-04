@@ -1,5 +1,5 @@
 #include "parameters.h"
-#include "time_compute.h"
+#include "compute.h"
 
 // Check if a number is prime
 int every_number(unsigned long long int n)
@@ -18,5 +18,5 @@ int every_number(unsigned long long int n)
 int main(int argc, char *argv[])
 {
     parameters parm = parameters_set(argc, argv); // Set parameters for the test
-    TIME_COMPUTE(every_number, parm);             // Do the test
+    compute(every_number, parm);                  // Do the test
 }

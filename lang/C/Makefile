@@ -5,24 +5,28 @@ CFLAGS 	:= -std=c17 -O3 -pedantic -Wall -Wextra -Werror -Wvla -I./lib
 # Paths
 SRC_DIR := src
 LIB_DIR := lib
-BUILD_DIR	:= build/bin
+BUILD_DIR := build
+BIN_DIR   := $(BUILD_DIR)/bin
+DB_DIR    := $(BUILD_DIR)/db
 
 # Find sources for lib and src
 LIB_SRCS := $(wildcard $(LIB_DIR)/*.c)
 SRC_SRCS := $(wildcard $(SRC_DIR)/*.c)
 
-# Name for binaries
-TARGETS := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%, $(SRC_SRCS))
+# Output
+TARGETS := $(patsubst $(SRC_DIR)/%.c, $(BIN_DIR)/%, $(SRC_SRCS))
+DBS     := $(patsubst $(BIN_DIR)/%, $(DB_DIR)/%.db, $(TARGETS))
 
 # Default - make the programme
 all: $(TARGETS)
 
-$(BUILD_DIR)/%: $(SRC_DIR)/%.c $(LIB_SRCS)
-	$(CC) $(CFLAGS) $< $(LIB_SRCS) -lrt -lm -o $@
+$(BIN_DIR)/%: $(SRC_DIR)/%.c $(LIB_SRCS)
+	$(CC) $(CFLAGS) $< $(LIB_SRCS) -lrt -lm -lsqlite3 -o $@
 
-# Delete binaries
+# Delete output
 clean:
 	rm -f $(TARGETS)
+	rm -f $(DBS)
 
 # Avoid conflicts
 .PHONY: all clean

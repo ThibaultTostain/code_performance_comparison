@@ -1,2 +1,6 @@
 # C
 lang/C/build/*
+
+# Python
+lang/python/.venv/*
+lang/python/__pycache__/*

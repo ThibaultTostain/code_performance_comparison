@@ -7,6 +7,7 @@ For this project I want to compare different programming languages ​​based o
 .
 ├── 📁 lang/           # Folder for every language
 │   └── 📁 C/          # Folder named by the name of the programming language
+│   └── 📁 python/
 ├── 📄 README.md       # Main REAMDE.md of the project
 └── 📄 LICENSE         # MIT License for this project
 ```

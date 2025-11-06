@@ -1,14 +1,7 @@
 # main.py
-import time
-from lang.python.functions import is_prime
+from lib import functions, compute
 
-def compute(function, *args):
-    start = time.perf_counter()
-    out = function(*args)
-    end = time.perf_counter()
-    sec = end - start
-    return out, sec
-
-for i in range(20):
-    out, sec = compute(is_prime, i)
+for i in range(100000,100005):
+    print("")
+    out, sec = compute.compute(functions.square_root_ceil, i)
     print(f"{i} : {out} in {sec:.6f}s")

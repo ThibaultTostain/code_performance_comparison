@@ -3,4 +3,4 @@ lang/C/build/*
 
 # Python
 lang/python/.venv/*
-lang/python/__pycache__/*
+lang/python/lib/__pycache__/*

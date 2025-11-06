@@ -42,6 +42,18 @@ To measure the execution time of functions, I use the `time.h` library and the `
 ### Benchmark Libraries
 I am aware of existing benchmarking libraries, but I prefer to implement my own solution for learning purposes. This may change in the future.
 
+## Save data
+
+The program save the output in ./build/bin/*.db with a sqlite database like :
+
+| VALUE | TIME |
+| --- | --- |
+| 3 | 0.000000 |
+| 127 | 0.000001 |
+| 924139 | 0.007334 |
+
+With VALUE as an integer and TIME a real.
+
 ## Some C code information
 
 1. The function `strdup(str)` alloc memory like `malloc(strlen(str) + 1)` and duplicate the string inside of it. So use `free()` at the end. You also have to add `#define _GNU_SOURCE`.

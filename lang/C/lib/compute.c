@@ -1,7 +1,9 @@
+#include <sqlite3.h>
 #include "compute.h"
 #include "parameters.h"
+#include "database.h"
 
-void compute(int (*evaluated_function)(unsigned long long int n), parameters parm)
+void compute(int (*evaluated_function)(unsigned long long int n), parameters parm, sqlite3 **db)
 {
     if (strcmp(parm.type, "linear") == 0)
     {
@@ -41,7 +43,11 @@ void compute(int (*evaluated_function)(unsigned long long int n), parameters par
             clock_t end_time = clock();
             double elapsed = (double)(end_time - start_time) / CLOCKS_PER_SEC;
             double avg_time = elapsed / (parm.rep);
-            printf("%d | %llu : %.6fs\n", res, value, avg_time);
+            // printf("%d | %llu : %.6fs\n", res, value, avg_time); // Disable to reduce run time
+            if (res == 0)
+            {
+                database_add(db, value, avg_time);
+            }
             if (avg_time >= (parm.max_time))
             {
                 printf("STOP : avg_time >= MAX_TIME.\n");

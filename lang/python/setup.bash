@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Virtual environment name
-VENV_NAME=".venv"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+VENV_NAME="$SCRIPT_DIR/.venv"
 
 # Function to ask for confirmation
 confirm() {
@@ -19,7 +20,7 @@ echo "This program will:"
 echo "1. Update apt and install python3-full via apt (requires sudo)"
 echo "2. Create a Python virtual environment ($VENV_NAME)"
 echo "3. Activate the virtual environment ($VENV_NAME)"
-echo "4. Install time in the virtual environment"
+#echo "4. Install ? in the virtual environment"
 echo ""
 
 if ! confirm "Do you want to continue?"; then
@@ -58,13 +59,13 @@ else
     exit 1
 fi
 
-# Step 4: Activate the environment and install time
-echo "Installing time in the virtual environment..."
-source "$VENV_NAME/bin/activate"
-if pip install time; then
-    echo "time installed successfully."
-    echo "You can activate the environment with: source $VENV_NAME/bin/activate"
-else
-    echo "Error: Failed to install time."
-    exit 1
-fi
+# Step 4: Activate the environment and install ?
+#echo "Installing . in the virtual environment..."
+#source "$VENV_NAME/bin/activate"
+#if pip install ?; then
+#    echo ". installed successfully."
+#    echo "You can activate the environment with: source $VENV_NAME/bin/activate"
+#else
+#    echo "Error: Failed to install ?."
+#    exit 1
+#fi

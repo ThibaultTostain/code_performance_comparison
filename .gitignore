@@ -5,3 +5,6 @@ lang/C/build/*
 lang/python/.venv/*
 lang/python/lib/__pycache__/*
 lang/python/db/*
+
+# Analysis
+analysis/.venv/*

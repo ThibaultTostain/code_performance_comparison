@@ -4,12 +4,12 @@
 #include <string.h>
 
 // Default values for the tests
-#define START_DEFAULT 100000
-#define END_DEFAULT 1000000
-#define DIVISOR_DEFAULT 10
+#define START_DEFAULT 2
+#define END_DEFAULT 10000000
+#define DIVISOR_DEFAULT 1000
 #define REP_DEFAULT 10
 #define MAX_TIME_DEFAULT 1
-#define TYPE_DEFAULT "log10"
+#define TYPE_DEFAULT "linear"
 
 #ifndef PARAMETERS_H
 #define PARAMETERS_H
